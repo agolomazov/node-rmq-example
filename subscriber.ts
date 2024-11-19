@@ -23,11 +23,24 @@ const run = async () => {
     channel.consume(queue.queue, (message) => {
       // Если сообщений нет, то ничего не делаем
       if (!message) {
-        return message;
+        return;
       }
 
       // обрабатываем сообщение
-      console.log(message.content.toString());
+      console.log(
+        `[SUBSCRIBER] Получил сообщение: ${message.content.toString()}`
+      );
+
+      // Проверяем, есть ли указание на то, что на сообщение нужно ответить
+      if (message.properties.replyTo) {
+        // console.log(message.properties);
+        channel.sendToQueue(
+          message.properties.replyTo,
+          Buffer.from(`Ответ на ${message.properties.correlationId}`),
+          { correlationId: message.properties.correlationId }
+        );
+      }
+
       // сообщаем брокеру что сообщение было обработано и может быть удалено
       channel.ack(message);
     });
