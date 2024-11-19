@@ -7,5 +7,4 @@
 1. Склонировать репозиторий
 2. Установить зависимости командой `npm install`
 3. Запустить сервер RabbitMQ с помощью команды `docker-compose up -d`
-4. Для запуска скрипта producer указать команду `npm run produce`
-5. Для запуска скрипта consumer указать команду `npm run consume`
+4. Для запуска скрипта сервисов publisher и subscriber вызвать команду команду `npm run start`
