@@ -1,0 +1,22 @@
+{
+  "name": "rmq",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "produce": "ts-node publisher.ts",
+    "consume": "ts-node subscriber.ts"
+  },
+  "keywords": [],
+  "author": "Anton Golomazov",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/node": "^22.9.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.4"
+  }
+}
